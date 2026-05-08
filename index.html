@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SoberTalk20s — A Message from Tony</title>
+<link rel="icon" type="image/png" href="ST20_Emblem2.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <style>
@@ -64,17 +65,23 @@
   }
 
   .hero-nav {
-    position: relative; z-index: 2;
+    position: relative; z-index: 10;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 28px 40px;
+    padding: 24px 40px;
     animation: fadeDown 0.6s ease both;
   }
 
-  .nav-logo {
-    font-size: 18px; font-weight: 800; letter-spacing: -0.04em;
-    line-height: 1;
+  .nav-branding {
+    display: flex; align-items: center; gap: 20px;
   }
-  .nav-logo .accent { color: var(--teal); }
+
+  .nav-logo-emblem {
+    height: 48px; width: auto;
+  }
+
+  .nav-logo-banner {
+    height: 32px; width: auto;
+  }
 
   .nav-tag {
     font-family: 'DM Mono', monospace; font-size: 10px;
@@ -106,14 +113,14 @@
   }
 
   .hero-h {
-    font-size: clamp(36px, 5.5vw, 68px);
+    font-size: clamp(32px, 4.5vw, 56px);
     font-weight: 800;
-    line-height: 1.0;
+    line-height: 1.1;
     letter-spacing: -0.04em;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     color: var(--text-primary);
   }
-  .hero-h .line2 { color: var(--teal); display: block; }
+  .hero-h .line2 { color: var(--teal); display: block; opacity: 0.9; }
 
   .hero-sub {
     font-family: 'Lora', serif;
@@ -159,7 +166,8 @@
   .tony-photo-wrap {
     position: relative;
     width: 100%;
-    max-width: 580px;
+    max-width: 680px; /* Increased from 580px */
+    transform: scale(1.05);
   }
 
   .tony-photo-wrap::before {
@@ -485,44 +493,72 @@
   }
   .accordion-header {
     width: 100%;
-    padding: 32px 0;
-    background: none;
-    border: none;
+    padding: 24px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius);
     display: flex;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
     text-align: left;
     color: inherit;
-    transition: background 0.2s;
+    transition: all 0.3s ease;
+    margin-bottom: 12px;
   }
   .accordion-header:hover {
-    opacity: 0.8;
+    border-color: var(--accent-color);
+    background: var(--bg-raised);
   }
   
   .accordion-trigger {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 24px;
     flex: 1;
   }
 
+  .pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 100px;
+    background: var(--accent-bg);
+    color: var(--accent-color);
+    border: 1px solid rgba(255,255,255,0.05);
+    flex-shrink: 0;
+    min-width: 160px;
+    text-align: center;
+  }
+
+  .header-main {
+    flex: 1;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: var(--text-tertiary);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+  }
+
   .accordion-icon {
-    width: 32px;
-    height: 32px;
-    border: 1px solid var(--border);
-    border-radius: 50%;
+    width: 24px;
+    height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.3s ease;
     flex-shrink: 0;
-    color: var(--text-tertiary);
   }
   .accordion-item.active .accordion-icon {
     transform: rotate(180deg);
-    border-color: var(--accent-color, var(--teal));
-    color: var(--accent-color, var(--teal));
+    color: var(--accent-color);
   }
 
   .accordion-content {
@@ -539,19 +575,26 @@
     padding-bottom: 40px;
   }
 
-  /* Section Colors */
-  .sec-1 { --accent-color: #14b8a6; }
-  .sec-2 { --accent-color: #f43f5e; }
-  .sec-3 { --accent-color: #f59e0b; }
-  .sec-4 { --accent-color: #8888ff; }
-  .sec-5 { --accent-color: #c8c800; }
-  .sec-6 { --accent-color: #a0a000; }
+  /* Section Colors - Rotated to avoid consecutive repeats */
+  .sec-1, .sec-4 { 
+    --accent-color: #14b8a6; 
+    --accent-bg: #082b26;
+  }
+  .sec-2, .sec-5 { 
+    --accent-color: #818cf8; 
+    --accent-bg: #12142a;
+  }
+  .sec-3, .sec-6 { 
+    --accent-color: #fbbf24; 
+    --accent-bg: #241805;
+  }
 
   .listened-check { display: none; margin-left: 8px; color: var(--accent-color, var(--teal)); font-weight: bold; }
   .accordion-item.listened .listened-check { display: inline; }
   .accordion-item.listened .sec-title { opacity: 0.6; }
 
-  .sec-title .em { color: var(--accent-color, var(--teal)) !important; }
+  .sec-title { color: var(--text-primary) !important; }
+  .sec-title .em { color: var(--text-primary) !important; }
   .sec-num { color: var(--accent-color, var(--teal)) !important; opacity: 0.7; }
   .play-btn { background: var(--accent-color, var(--teal)) !important; }
   .timeline-fill { background: var(--accent-color, var(--teal)) !important; }
@@ -584,7 +627,10 @@
     <div class="hero-bg"></div>
 
     <nav class="hero-nav">
-            <img src="sobertalk20s_banner.png" alt="SoberTalk20s Banner" class="nav-logo" style="height: 32px; width: auto;">
+      <div class="nav-branding">
+        <img src="ST20_Emblem2.png" alt="SoberTalk20s Emblem" class="nav-logo-emblem">
+        <img src="sobertalk20s_banner.png" alt="SoberTalk20s Banner" class="nav-logo-banner">
+      </div>
       <div class="nav-tag">Stay clear.</div>
     </nav>
 
@@ -656,11 +702,17 @@
     <div class="accordion-item sec-1" id="item-s1">
       <button class="accordion-header" onclick="toggleAccordion('s1')">
         <div class="accordion-trigger">
-          <div class="sec-num">Section 01 of 06 <span class="listened-check">✓</span></div>
-          <h2 class="sec-title">The <span class="em">Architecture</span></h2>
+          <div class="pill">introduction.01</div>
+          <div class="header-main">
+            <h2 class="sec-title">The <span class="em">Architecture</span></h2>
+            <p class="sec-desc">Why your 20s are structurally, not personally, built around alcohol.</p>
+          </div>
         </div>
-        <div class="accordion-icon">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 4 6 8 10 4"/></svg>
+        <div class="header-right">
+          <span class="duration">~6 min</span>
+          <div class="accordion-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 4 6 8 10 4"/></svg>
+          </div>
         </div>
       </button>
 
@@ -669,7 +721,7 @@
           <div class="audio-sec" data-sec="s1" id="sec-s1" style="padding: 0; border: none; opacity: 1; transform: none;">
             <div class="sec-top">
               <div class="sec-left">
-                <p class="sec-desc">Why your 20s are structurally, not personally, built around alcohol. The design nobody chose and nobody questioned.</p>
+                <!-- Description moved to header -->
               </div>
               <div class="listened-badge">
                 <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><polyline points="1,4 3.5,6.5 9,1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -701,7 +753,7 @@
 
             <button class="transcript-toggle" onclick="toggleTranscript('s1', this)">
               <svg viewBox="0 0 12 12"><path d="M6 8L1 3h10z"/></svg>
-              Read Summary
+              <span>Read Summary</span>
             </button>
             <div class="transcript" id="transcript-s1">
               <p>Your 20s — and I mean this literally, not as a feeling, not as a metaphor — your 20s are structurally, architecturally, in the actual social calendar of your life, built around alcohol. The Friday night invite. The first date where she orders wine before you've even properly sat down and looks at you like the next move is yours. The work event where the bar is the only room where anyone actually relaxes and talks like a human being.</p>
@@ -726,11 +778,17 @@
     <div class="accordion-item sec-2" id="item-s2">
       <button class="accordion-header" onclick="toggleAccordion('s2')">
         <div class="accordion-trigger">
-          <div class="sec-num">Section 02 of 06 <span class="listened-check">✓</span></div>
-          <h2 class="sec-title">The <span class="em">Cost</span></h2>
+          <div class="pill">introduction.02</div>
+          <div class="header-main">
+            <h2 class="sec-title">The <span class="em">Cost</span></h2>
+            <p class="sec-desc">The slow, quiet work alcohol does before you notice it's happened.</p>
+          </div>
         </div>
-        <div class="accordion-icon">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 4 6 8 10 4"/></svg>
+        <div class="header-right">
+          <span class="duration">~6 min</span>
+          <div class="accordion-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 4 6 8 10 4"/></svg>
+          </div>
         </div>
       </button>
 
@@ -739,7 +797,7 @@
           <div class="audio-sec" data-sec="s2" id="sec-s2" style="padding: 0; border: none; opacity: 1; transform: none;">
             <div class="sec-top">
               <div class="sec-left">
-                <p class="sec-desc">Not a list. One specific thing. The slow, quiet work alcohol does before you notice it's happened.</p>
+                <!-- Description moved to header -->
               </div>
               <div class="listened-badge">
                 <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><polyline points="1,4 3.5,6.5 9,1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -771,7 +829,7 @@
 
             <button class="transcript-toggle" onclick="toggleTranscript('s2', this)">
               <svg viewBox="0 0 12 12"><path d="M6 8L1 3h10z"/></svg>
-              Read Summary
+              <span>Read Summary</span>
             </button>
             <div class="transcript" id="transcript-s2">
               <p>One real thing alcohol cost me. Not a list. One thing. I had a best friend in my late twenties — a guy named Dan. We had been close since college. And at some point, I stopped being someone he could rely on. Not because I was mean. Because I was never fully there.</p>
@@ -796,11 +854,17 @@
     <div class="accordion-item sec-3" id="item-s3">
       <button class="accordion-header" onclick="toggleAccordion('s3')">
         <div class="accordion-trigger">
-          <div class="sec-num">Section 03 of 06 <span class="listened-check">✓</span></div>
-          <h2 class="sec-title">The <span class="em">Turn</span></h2>
+          <div class="pill">introduction.03</div>
+          <div class="header-main">
+            <h2 class="sec-title">The <span class="em">Turn</span></h2>
+            <p class="sec-desc">No rock bottom. No intervention. Just a boring, exhausted realisation.</p>
+          </div>
         </div>
-        <div class="accordion-icon">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 4 6 8 10 4"/></svg>
+        <div class="header-right">
+          <span class="duration">~5 min</span>
+          <div class="accordion-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 4 6 8 10 4"/></svg>
+          </div>
         </div>
       </button>
 
@@ -809,7 +873,7 @@
           <div class="audio-sec" data-sec="s3" id="sec-s3" style="padding: 0; border: none; opacity: 1; transform: none;">
             <div class="sec-top">
               <div class="sec-left">
-                <p class="sec-desc">No rock bottom. No intervention. Just a boring, exhausted realisation — and what happened the morning after.</p>
+                <!-- Description moved to header -->
               </div>
               <div class="listened-badge">
                 <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><polyline points="1,4 3.5,6.5 9,1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -841,7 +905,7 @@
 
             <button class="transcript-toggle" onclick="toggleTranscript('s3', this)">
               <svg viewBox="0 0 12 12"><path d="M6 8L1 3h10z"/></svg>
-              Read Summary
+              <span>Read Summary</span>
             </button>
             <div class="transcript" id="transcript-s3">
               <p>I was 37, sitting on my couch, watching a show I didn't care about, drinking a beer I didn't want. And I had this thought — not dramatic, not profound — <em>"I have done this exact thing ten thousand times. And I have never once woken up the next day and thought, I am so glad I had that beer."</em></p>
@@ -867,11 +931,17 @@
     <div class="accordion-item sec-4" id="item-s4">
       <button class="accordion-header" onclick="toggleAccordion('s4')">
         <div class="accordion-trigger">
-          <div class="sec-num">Section 04 of 06 <span class="listened-check">✓</span></div>
-          <h2 class="sec-title">What This Is <span class="em">Actually For</span></h2>
+          <div class="pill">introduction.04</div>
+          <div class="header-main">
+            <h2 class="sec-title">What This Is <span class="em">Actually For</span></h2>
+            <p class="sec-desc">This course wasn't built for people who've lost enough. It was built for you.</p>
+          </div>
         </div>
-        <div class="accordion-icon">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 4 6 8 10 4"/></svg>
+        <div class="header-right">
+          <span class="duration">~5 min</span>
+          <div class="accordion-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 4 6 8 10 4"/></svg>
+          </div>
         </div>
       </button>
 
@@ -880,7 +950,7 @@
           <div class="audio-sec" data-sec="s4" id="sec-s4" style="padding: 0; border: none; opacity: 1; transform: none;">
             <div class="sec-top">
               <div class="sec-left">
-                <p class="sec-desc">This course wasn't built for people who've lost enough. It was built for the person standing at a house party at 11pm, holding sparkling water, smiling like they're fine.</p>
+                <!-- Description moved to header -->
               </div>
               <div class="listened-badge">
                 <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><polyline points="1,4 3.5,6.5 9,1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -912,7 +982,7 @@
 
             <button class="transcript-toggle" onclick="toggleTranscript('s4', this)">
               <svg viewBox="0 0 12 12"><path d="M6 8L1 3h10z"/></svg>
-              Read Summary
+              <span>Read Summary</span>
             </button>
             <div class="transcript" id="transcript-s4">
               <p>Here is what the standard sobriety conversation gets wrong. It talks about rock bottom like it is an entry requirement. Like you need to have lost enough — the job, the marriage, something specific and humiliating — before you are allowed to want things to be different.</p>
@@ -937,11 +1007,17 @@
     <div class="accordion-item sec-5" id="item-s5">
       <button class="accordion-header" onclick="toggleAccordion('s5')">
         <div class="accordion-trigger">
-          <div class="sec-num">Section 05 of 06 <span class="listened-check">✓</span></div>
-          <h2 class="sec-title">What Makes <span class="em">This Different</span></h2>
+          <div class="pill">introduction.05</div>
+          <div class="header-main">
+            <h2 class="sec-title">What Makes <span class="em">This Different</span></h2>
+            <p class="sec-desc">The community. The live sessions. The truth from people who lived it.</p>
+          </div>
         </div>
-        <div class="accordion-icon">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 4 6 8 10 4"/></svg>
+        <div class="header-right">
+          <span class="duration">~6 min</span>
+          <div class="accordion-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 4 6 8 10 4"/></svg>
+          </div>
         </div>
       </button>
 
@@ -950,7 +1026,7 @@
           <div class="audio-sec" data-sec="s5" id="sec-s5" style="padding: 0; border: none; opacity: 1; transform: none;">
             <div class="sec-top">
               <div class="sec-left">
-                <p class="sec-desc">The community. The live sessions. The people who lived their 20s at the bottom of a bottle — and come back to tell you what it actually cost.</p>
+                <!-- Description moved to header -->
               </div>
               <div class="listened-badge">
                 <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><polyline points="1,4 3.5,6.5 9,1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -982,7 +1058,7 @@
 
             <button class="transcript-toggle" onclick="toggleTranscript('s5', this)">
               <svg viewBox="0 0 12 12"><path d="M6 8L1 3h10z"/></svg>
-              Read transcript
+              <span>Read Summary</span>
             </button>
             <div class="transcript" id="transcript-s5">
               <p>The community is not a bonus feature. It is not the place you go after you finish the real course. It is the thing that makes the rest of it stick.</p>
@@ -1007,11 +1083,17 @@
     <div class="accordion-item sec-6" id="item-s6">
       <button class="accordion-header" onclick="toggleAccordion('s6')">
         <div class="accordion-trigger">
-          <div class="sec-num">Section 06 of 06 <span class="listened-check">✓</span></div>
-          <h2 class="sec-title">One Sentence to My <span class="em">22-Year-Old Self</span></h2>
+          <div class="pill">introduction.06</div>
+          <div class="header-main">
+            <h2 class="sec-title">One Sentence to My <span class="em">22-Year-Old Self</span></h2>
+            <p class="sec-desc">The truth with the laugh in it. Because that's what being 22 deserves.</p>
+          </div>
         </div>
-        <div class="accordion-icon">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 4 6 8 10 4"/></svg>
+        <div class="header-right">
+          <span class="duration">~4 min</span>
+          <div class="accordion-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 4 6 8 10 4"/></svg>
+          </div>
         </div>
       </button>
 
@@ -1020,7 +1102,7 @@
           <div class="audio-sec" data-sec="s6" id="sec-s6" style="padding: 0; border: none; opacity: 1; transform: none;">
             <div class="sec-top">
               <div class="sec-left">
-                <p class="sec-desc">The truth with the laugh in it. Because that's what being 22 actually deserves.</p>
+                <!-- Description moved to header -->
               </div>
               <div class="listened-badge">
                 <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><polyline points="1,4 3.5,6.5 9,1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1052,7 +1134,7 @@
 
             <button class="transcript-toggle" onclick="toggleTranscript('s6', this)">
               <svg viewBox="0 0 12 12"><path d="M6 8L1 3h10z"/></svg>
-              Read Summary
+              <span>Read Summary</span>
             </button>
             <div class="transcript" id="transcript-s6">
               <p>Here is the one sentence I would actually say to my 22-year-old self. Not polished. Not motivational. Just true.</p>
@@ -1192,10 +1274,10 @@
     const t = document.getElementById('transcript-' + id);
     t.classList.toggle('open');
     btn.classList.toggle('open');
-    btn.querySelector('span') && (btn.querySelector('span').textContent = t.classList.contains('open') ? 'Hide transcript' : 'Read transcript');
-    // Update button text node
-    const textNode = [...btn.childNodes].find(n => n.nodeType === 3);
-    if (textNode) textNode.textContent = t.classList.contains('open') ? ' Hide transcript' : ' Read transcript';
+    const span = btn.querySelector('span');
+    if (span) {
+      span.textContent = t.classList.contains('open') ? 'Hide summary' : 'Read summary';
+    }
   }
 
   // ── MARK LISTENED ──
